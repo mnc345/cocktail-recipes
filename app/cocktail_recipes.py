@@ -5,6 +5,8 @@ import json
 
 load_dotenv()
 
+import random
+
 # COCKTAIL_API = os.getenv("COCKTAIL_API")
 
 def liquor_type():
@@ -13,13 +15,16 @@ def liquor_type():
     request_url = f"https://www.thecocktaildb.com/api/json/v1/1/filter.php?i={liquor}"
     response = requests.get(request_url)
     liquor_data = json.loads(response.text)
-#print(type(response))
-#print(response.text)
 
     for l in (liquor_data["drinks"]):
-        print(l["strDrink"], "\n")
+       valid_options = (l["strDrink"])
+        #cocktail_choice = random.choice(valid_options)
+        #print("Cocktail choice:", cocktail_choice)
+       print(valid_options)
 
 liquor_type()
+
+
 
 
 # import webbrowser

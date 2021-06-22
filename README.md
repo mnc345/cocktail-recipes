@@ -21,7 +21,7 @@ Use Anaconda to create and activate a new virtual environment, perhaps called "c
 
 ```sh
 conda create -n cocktail-recipes python=3.8
-conda activate cocktail recipes
+conda activate cocktail-recipes
 ```
 
 After activating the virtual environment, install package dependencies (see the ["requirements.txt"](/requirements.txt) file):
