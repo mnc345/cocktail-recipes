@@ -11,11 +11,13 @@ import random
 
 def liquor_type():
     liquor = input("Please select a liquor type: ")
-    if (liquor == "whiskey") or (liquor == "whisky") or (liquor == "brandy") or (liquor == "wine") or (liquor == "gin") or (liquor == "vodka") or (liquor == "tequila") or (liquor == "rum"):
-        print(f"SELECTED LIQUOR: '{liquor}'")
-    else:
+    valid_selections = ["whiskey", "whisky", "beer", "port", "vermouth", "everclear", "absinthe", "cider", "brandy", "aperol", "wine", "gin", "vodka", "rum", "tequila"]
+    if liquor not in valid_selections:
         print("OOPS, invalid liquor type. Please try again.")
         exit()
+    else:
+        print(f"SELECTED LIQUOR: '{liquor}'")
+        
     
     request_url = f"https://www.thecocktaildb.com/api/json/v1/1/filter.php?i={liquor}"
     response = requests.get(request_url)
