@@ -56,8 +56,6 @@ def liquor_type():
 
 liquor_type()
 
-print("test for push")
-
 # # import webbrowser
 # # def cocktails():
 # #     cocktail_type = input("please select type of cocktail: ")
