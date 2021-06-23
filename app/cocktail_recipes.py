@@ -25,8 +25,19 @@ def liquor_type():
     liquor_data = json.loads(response.text)
 
     drinks = liquor_data["drinks"]
-    random_drink = random.choice(drinks)
-    print("Cocktail choice: ", random_drink["strDrink"])
+
+    while True:
+        random_drink = random.choice(drinks)
+        print("*Cocktail choice:",random_drink["strDrink"])
+
+        user_choice = input("Do you want this type of cocktail? If so, type 'yes' If no, hit enter: ").lower()
+        if  user_choice == "yes":
+            break
+
+    drink_id = random_drink["idDrink"]
+
+    print("*You have selected drink id",drink_id)
+
 
 liquor_type()
 
