@@ -5,7 +5,8 @@ import json
 
 load_dotenv()
 
-import random
+import random 
+
 
 # COCKTAIL_API = os.getenv("COCKTAIL_API") -- NOT SURE WE NEED THIS
 
@@ -23,15 +24,12 @@ def liquor_type():
     response = requests.get(request_url)
     liquor_data = json.loads(response.text)
 
-    random_drink = liquor_data["drinks"][0]
-    random_drink = random.choice[]
+    drinks = liquor_data["drinks"]
+    num_drinks = len(drinks)
 
-
-    # for l in (liquor_data["drinks"]):
-    #     valid_options = [l["strDrink"]]
-    #     cocktail_choice = random.choice(valid_options)
-    #     print("Cocktail choice:", cocktail_choice)
-       #print(valid_options)
+    index = random.randrange(num_drinks)
+    random_drink = drinks[index]
+    print("Cocktail choice: ", random_drink["strDrink"])
 
 liquor_type()
 
