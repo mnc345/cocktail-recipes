@@ -2,13 +2,12 @@ import os
 from dotenv import load_dotenv
 
 from requests.models import encode_multipart_formdata
-
 import requests
+import random 
 import json
 
 load_dotenv()
 
-import random 
 
 
 # COCKTAIL_API = os.getenv("COCKTAIL_API") -- NOT SURE WE NEED THIS
