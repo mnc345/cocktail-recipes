@@ -1,6 +1,6 @@
 # cocktail-recipes
 
-A cocktail recipe generator that helps the user pick a drink based on inputs (e.g. liquor type, flavor profile, etc.).
+A cocktail recipe generator that helps the user pick a drink based on liquor input. A copy of the cocktail ingredients and instructions is emailed to the user using SendGrid.
 
 ## Prerequisites
 
