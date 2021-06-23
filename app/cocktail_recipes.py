@@ -11,7 +11,8 @@ load_dotenv()
 
 
 
-# COCKTAIL_API = os.getenv("COCKTAIL_API") -- NOT SURE WE NEED THIS
+# SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY") -- FOR SENDGRID
+# SENDER_EMAIL_ADDRESS = os.getenv("SENDER_EMAIL_ADDRESS") -- FOR SENDGRID
 
 def liquor_type():
     liquor = input("Please select a liquor type: ").lower()
