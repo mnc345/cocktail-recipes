@@ -41,25 +41,42 @@ def liquor_type():
 
 liquor_type()
 
-
-
-
-# import webbrowser
 # def cocktails():
-#     cocktail_type = input("please select type of cocktail: ")
+#     cocktail_type = input(random_drink["strDrink"])
 #     request_url = f"https://www.thecocktaildb.com/api/json/v1/1/search.php?s={cocktail_type}"
 #     data = requests.get(request_url)
 #     tt = json.loads(data.text)
-    
-    
+
 #     for i in (tt["drinks"]):
-#         print(i["strDrink"], "\n")
 #         print(i["strInstructions"], "\n")
-        
 #         print(i["strIngredient1"])
 #         print(i["strIngredient2"])
 #         print(i["strIngredient3"])
 #         print(i["strIngredient4"])
-#         url = i["strDrinkThumb"]
-#         webbrowser.open(url)
+#         print(i["strIngredient5"])
+#         print(i["strIngredient6"])
+#         print(i["strIngredient7"])
+#         print(i["strIngredient8"])
+#         print(i["strIngredient9"])
+
 # cocktails()
+
+# # import webbrowser
+# # def cocktails():
+# #     cocktail_type = input("please select type of cocktail: ")
+# #     request_url = f"https://www.thecocktaildb.com/api/json/v1/1/search.php?s={cocktail_type}"
+# #     data = requests.get(request_url)
+# #     tt = json.loads(data.text)
+    
+    
+# #     for i in (tt["drinks"]):
+# #         print(i["strDrink"], "\n")
+# #         print(i["strInstructions"], "\n")
+        
+# #         print(i["strIngredient1"])
+# #         print(i["strIngredient2"])
+# #         print(i["strIngredient3"])
+# #         print(i["strIngredient4"])
+# #         url = i["strDrinkThumb"]
+# #         webbrowser.open(url)
+# # cocktails()
