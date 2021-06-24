@@ -10,10 +10,6 @@ import json
 load_dotenv()
 
 
-
-# SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY") -- FOR SENDGRID
-# SENDER_EMAIL_ADDRESS = os.getenv("SENDER_EMAIL_ADDRESS") -- FOR SENDGRID
-
 valid_selections = ["whiskey", "whisky", "beer", "port", "vermouth", "everclear", "absinthe", "cider", "brandy", "aperol", "wine", "gin", "vodka", "rum", "tequila"]
 
 
