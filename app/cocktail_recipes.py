@@ -33,7 +33,7 @@ else:
         random_drink = random.choice(drinks)
         print("Cocktail choice:",random_drink["strDrink"])
 
-        user_choice = input("Do you want this type of cocktail? If so, type 'yes' If no, hit 'enter': ").lower()
+        user_choice = input("Do you want this type of cocktail? If so, type 'yes' If no, type any key: ").lower()
         if  user_choice == "yes":
             break
             
