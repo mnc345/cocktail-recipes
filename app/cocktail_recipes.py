@@ -47,27 +47,25 @@ else:
     
 
 drink = id_data["drinks"][0]
-for index in range(1, 15):
-    key = "strMeasure"+str(index)
-    measurment = drink[key]
-    if (measurment is not None):
-        print(measurment)
 
-    drink = id_data["drinks"][0]
 for index in range(1, 15):
     key = "strIngredient"+str(index)
     ingredient = drink[key]
+    key = "strMeasure"+str(index)
+    measurment = drink[key]
     if (ingredient is not None):
-        print(ingredient)
-
-
-
+        if measurment is not None:
+            print(measurment, ingredient)
+        else:
+            print(ingredient)
+        
 
         #url = i["strDrinkThumb"]
         #webbrowser.open(url)
 
 
 liquor
+
 
 ##Email the choice to user 
 
