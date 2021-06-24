@@ -14,15 +14,17 @@ load_dotenv()
 # SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY") -- FOR SENDGRID
 # SENDER_EMAIL_ADDRESS = os.getenv("SENDER_EMAIL_ADDRESS") -- FOR SENDGRID
 
-def liquor_type():
-    liquor = input("Please select a liquor type: ").lower()
-    valid_selections = ["whiskey", "whisky", "beer", "port", "vermouth", "everclear", "absinthe", "cider", "brandy", "aperol", "wine", "gin", "vodka", "rum", "tequila"]
-    if liquor not in valid_selections:
-        print("OOPS! Invalid liquor type. Please try again.")
-        exit()
-    else:
-        print(f"Selected liquor: '{liquor}'")
-        print("\n")
+valid_selections = ["whiskey", "whisky", "beer", "port", "vermouth", "everclear", "absinthe", "cider", "brandy", "aperol", "wine", "gin", "vodka", "rum", "tequila"]
+
+
+liquor = input("Please select a liquor type: ").lower()
+    
+if liquor not in valid_selections:
+    print("OOPS! Invalid liquor type. Please try again.")
+    exit()
+else:
+    print(f"Selected liquor: '{liquor}'")
+    print("\n")
         
     
     request_url = f"https://www.thecocktaildb.com/api/json/v1/1/filter.php?i={liquor}"
@@ -105,4 +107,4 @@ def liquor_type():
         webbrowser.open(url)
 
 
-liquor_type()
+liquor
