@@ -45,41 +45,33 @@ else:
     id_response = requests.get(request_url_id)
     id_data = json.loads(id_response.text)
     
-    # request_url_ingredients = f"https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
-    # ingredients_response = requests.get(request_url_ingredients)
-    # ingredients_data = json.loads(ingredients_response.text)
 
-    print("\n")
-    print("Instructions: ")
+drink = id_data["drinks"][0]
+for index in range(1, 15):
+    key = "strMeasure"+str(index)
+    measurment = drink[key]
+    if (measurment is not None):
+        print(measurment)
 
-    for i in (id_data["drinks"]):
-        print(i["strInstructions"], "\n")
-
-        print("Ingredients: ")
-        print("Ingredient 1: ", i["strMeasure1"], i["strIngredient1"])
-        print("Ingredient 2: ", i["strMeasure2"], i["strIngredient2"])
-        print("Ingredient 3: ", i["strMeasure3"], i["strIngredient3"])
-        print("Ingredient 4: ", i["strMeasure4"], i["strIngredient4"])
-        print("Ingredient 5: ", i["strMeasure5"], i["strIngredient5"])
-        print("Ingredient 6: ", i["strMeasure6"], i["strIngredient6"])
-        print("Ingredient 7: ", i["strMeasure7"], i["strIngredient7"])
-        print("Ingredient 8: ", i["strMeasure8"], i["strIngredient8"])
-        print("Ingredient 9: ", i["strMeasure9"], i["strIngredient9"])
-        print("Ingredient 10: ", i["strMeasure10"], i["strIngredient10"])
-        print("Ingredient 11: ", i["strMeasure11"], i["strIngredient11"])
-        print("Ingredient 12: ", i["strMeasure12"], i["strIngredient12"])
-        print("Ingredient 13: ", i["strMeasure13"], i["strIngredient13"])
-        print("Ingredient 14: ", i["strMeasure14"], i["strIngredient14"])
-        print("Ingredient 15: ", i["strMeasure15"], i["strIngredient15"])
+    drink = id_data["drinks"][0]
+for index in range(1, 15):
+    key = "strIngredient"+str(index)
+    ingredient = drink[key]
+    if (ingredient is not None):
+        print(ingredient)
 
 
-        url = i["strDrinkThumb"]
-        webbrowser.open(url)
+
+
+        #url = i["strDrinkThumb"]
+        #webbrowser.open(url)
 
 
 liquor
 
 ##Email the choice to user 
+
+
 
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
@@ -148,3 +140,5 @@ try:
 except Exception as err:
    print(type(err))
    print(err) 
+
+
