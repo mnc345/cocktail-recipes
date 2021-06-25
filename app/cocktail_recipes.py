@@ -131,6 +131,16 @@ if __name__ == "__main__":
     measurement_15 = drink["strMeasure15"]
     image = drink["strDrinkThumb"]
 
+    ingredient_list= [ingredient_1,ingredient_2, ingredient_3, ingredient_4,ingredient_5, ingredient_6, ingredient_7,ingredient_8,ingredient_9,ingredient_10,ingredient_11, ingredient_12,ingredient_13,ingredient_14,ingredient_15]
+    measurement_list= [measurement_1, measurement_2,measurement_3,measurement_4,measurement_5,measurement_6,measurement_7,measurement_8, measurement_9,measurement_10,measurement_11, measurement_12,measurement_13,measurement_14,measurement_15]
+    y= ""
+    for index in range(1,15):
+        ingredient = ingredient_list[index]
+        measurement = measurement_list[index]
+        if (ingredient is not None):
+            y+= f"<li> {measurement} | {ingredient} </li>"
+                  
+
     cocktail_html = f"""
     <h3>Hello, {USER_NAME}!</h3>
     <h4>You chose a cocktail with {liquor}.</h4>
@@ -141,23 +151,13 @@ if __name__ == "__main__":
     
     <h4>Here are the required ingredients:</h4>
     <ul>
-    	<li>{measurement_1} | {ingredient_1}</li>
-    	<li>{measurement_2} | {ingredient_2}</li>
-    	<li>{measurement_3} | {ingredient_3}</li>
-    	<li>{measurement_4} | {ingredient_4}</li>
-    	<li>{measurement_5} | {ingredient_5}</li>
-    	<li>{measurement_6} | {ingredient_6}</li>
-    	<li>{measurement_7} | {ingredient_7}</li>
-    	<li>{measurement_8} | {ingredient_8}</li>
-    	<li>{measurement_9} | {ingredient_9}</li>
-    	<li>{measurement_10} | {ingredient_10}</li>
-    	<li>{measurement_11} | {ingredient_11}</li>
-    	<li>{measurement_12} | {ingredient_12}</li>
-    	<li>{measurement_13} | {ingredient_13}</li>
-    	<li>{measurement_14} | {ingredient_14}</li>
-    	<li>{measurement_15} | {ingredient_15}</li>
+        {y}
+        
     </ul>
     <img src="{image}">
     """
 
     send_email(subject, cocktail_html)
+
+# if __name__ == "__main__":
+
