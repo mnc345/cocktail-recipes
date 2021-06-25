@@ -1,3 +1,4 @@
 python-dotenv
 pytest
 requests
+sendgrid==6.6.0
