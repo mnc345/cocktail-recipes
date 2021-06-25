@@ -36,10 +36,11 @@ pip install -r requirements.txt
 
 Create an API key from [SendGrid](https://sendgrid.com/solutions/email-api/).
 
-In in the root directory of your local repository, create a new file called ".env", and update the contents of the ".env" file to specify your SendGrid API key:
+In in the root directory of your local repository, create a new file called ".env", and update the contents of the ".env" file to specify your SendGrid API key, email address, and user name:
 
-    SENDGRID_API_KEY:"________"
-    SENDER_EMAIL_ADDRESS:"_______"
+    SENDGRID_API_KEY="________"
+    SENDER_EMAIL_ADDRESS="________"
+    USER_NAME="________"
 
 > NOTE: the ".env" file is usually the place for passing configuration options and secret credentials, so as a best practice we don't upload this file to version control (which is accomplished via a corresponding entry in the [".gitignore"](/.gitignore) file). This means each person who uses our code needs to create their own local ".env" file.
 
