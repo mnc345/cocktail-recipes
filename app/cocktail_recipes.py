@@ -32,8 +32,11 @@ else:
     while True:
         random_drink = random.choice(drinks)
         print("Cocktail choice:",random_drink["strDrink"])
+        url = random_drink["strDrinkThumb"]
+        webbrowser.open(url)
 
         user_choice = input("Do you want this type of cocktail? If so, type 'yes' If no, type any key: ").lower()
+        
         if  user_choice == "yes":
             break
             
@@ -58,10 +61,6 @@ for index in range(1, 15):
             print(measurement, ingredient)
         else:
             print(ingredient)
-        
-
-        #url = i["strDrinkThumb"]
-        #webbrowser.open(url)
 
 
 liquor
@@ -139,7 +138,6 @@ if __name__ == "__main__":
     
     <h4>Here are the instructions:</h4>
     <p>{instructions}</p>
-
     
     <h4>Here are the required ingredients:</h4>
     <ul>
@@ -159,11 +157,7 @@ if __name__ == "__main__":
     	<li>{measurement_14} | {ingredient_14}</li>
     	<li>{measurement_15} | {ingredient_15}</li>
     </ul>
-
     <img src="{image}">
-
     """
 
     send_email(subject, cocktail_html)
-
-    #<a href="{image}">Click here for a photo of your chosen cocktail</a>
