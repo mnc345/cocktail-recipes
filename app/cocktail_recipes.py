@@ -130,6 +130,7 @@ if __name__ == "__main__":
     measurement_14 = drink["strMeasure14"]
     ingredient_15 = drink["strIngredient15"]
     measurement_15 = drink["strMeasure15"]
+    image = drink["strDrinkThumb"]
 
     cocktail_html = f"""
     <h3>Hello, {USER_NAME}!</h3>
@@ -158,6 +159,8 @@ if __name__ == "__main__":
     	<li>{measurement_14} | {ingredient_14}</li>
     	<li>{measurement_15} | {ingredient_15}</li>
     </ul>
+
+    <a href="{image}">Click here for a photo of your chosen cocktail</a>
     """
 
     send_email(subject, cocktail_html)
