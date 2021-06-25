@@ -130,13 +130,13 @@ if __name__ == "__main__":
     measurement_14 = drink["strMeasure14"]
     ingredient_15 = drink["strIngredient15"]
     measurement_15 = drink["strMeasure15"]
-    
+
     cocktail_html = f"""
     <h3>Hello, {USER_NAME}!</h3>
     <h4>You chose a cocktail with {liquor}.</h4>
     <h4>The name of your cocktail is {cocktail_choice}!</h4>
     
-    <h4>Here are the instructions</h4>
+    <h4>Here are the instructions:</h4>
     <p>{instructions}</p>
 
     
