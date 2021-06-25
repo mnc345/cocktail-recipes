@@ -160,7 +160,10 @@ if __name__ == "__main__":
     	<li>{measurement_15} | {ingredient_15}</li>
     </ul>
 
-    <a href="{image}">Click here for a photo of your chosen cocktail</a>
+    <img src="{image}">
+
     """
 
     send_email(subject, cocktail_html)
+
+    #<a href="{image}">Click here for a photo of your chosen cocktail</a>
