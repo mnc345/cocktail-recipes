@@ -78,6 +78,8 @@ if __name__ == "__main__":
 
     drink = id_data["drinks"][0]
 
+    print(drink["strInstructions"])
+    
     for index in range(1, 15):
         key = "strIngredient"+str(index)
         ingredient = drink[key]
