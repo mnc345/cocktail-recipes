@@ -7,93 +7,101 @@ import random
 import webbrowser
 import json
 
+
+
 load_dotenv()
 
-
-valid_selections = ["whiskey", "whisky", "beer", "port", "vermouth", "everclear", "absinthe", "cider", "brandy", "aperol", "wine", "gin", "vodka", "rum", "tequila"]
-
-
-liquor = input("Please select a liquor type: ").lower()
-    
-if liquor not in valid_selections:
-    print("OOPS! Invalid liquor type. Please try again.")
-    exit()
-else:
-    print(f"Selected liquor: '{liquor}'")
-    print("\n")
-        
-    
+def fetch_cocktails(liquor):
     request_url = f"https://www.thecocktaildb.com/api/json/v1/1/filter.php?i={liquor}"
     response = requests.get(request_url)
-    liquor_data = json.loads(response.text)
 
-    drinks = liquor_data["drinks"]
-
-    while True:
-        random_drink = random.choice(drinks)
-        print("Cocktail choice:",random_drink["strDrink"])
-        url = random_drink["strDrinkThumb"]
-        webbrowser.open(url)
-
-        user_choice = input("Do you want this type of cocktail? If so, type 'yes' If no, type any key: ").lower()
-        
-        if  user_choice == "yes":
-            break
-            
-            print("\n")
-    
-    drink_id = random_drink["idDrink"]
-
-    request_url_id = f"https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i={drink_id}"
-    id_response = requests.get(request_url_id)
-    id_data = json.loads(id_response.text)
-    
-
-drink = id_data["drinks"][0]
-
-for index in range(1, 15):
-    key = "strIngredient"+str(index)
-    ingredient = drink[key]
-    key = "strMeasure"+str(index)
-    measurement = drink[key]
-    if (ingredient is not None):
-        if measurement is not None:
-            print(measurement, ingredient)
-        else:
-            print(ingredient)
-
-
-liquor
-
-##Email the choice to user 
-
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
-
-SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
-SENDER_EMAIL_ADDRESS = os.getenv("SENDER_EMAIL_ADDRESS")
-
-USER_NAME = os.getenv("USER_NAME", default="Cocktail Lover")
-
-def send_email(subject="YOUR COCKTAIL RECIPE IS HERE!", html="<p>Enjoy your drink!</p>", recipient_address=SENDER_EMAIL_ADDRESS):
-
-    client = SendGridAPIClient(SENDGRID_API_KEY)
-    print("CLIENT:", type(client))
-    print("SUBJECT:", subject)
-
-    message = Mail(from_email=SENDER_EMAIL_ADDRESS, to_emails=recipient_address, subject=subject, html_content=html)
-
-    try:
-       response = client.send(message)
-       print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
-       print(response.status_code) #> 202 indicates SUCCESS
-       return response
-    except Exception as e:
-       print("OOPS", type(e), e.message)
-       return None
+    if response is not None and response.text is not None:
+        liquor_data = json.loads(response.text)
+        drinks = liquor_data["drinks"]
+        return drinks
+    else:
+        return None
 
 if __name__ == "__main__":
-    
+
+    def send_email(subject="YOUR COCKTAIL RECIPE IS HERE!", html="<p>Enjoy your drink!</p>", recipient_address=os.environ.get("SENDER_EMAIL_ADDRESS")):
+        client = SendGridAPIClient(SENDGRID_API_KEY)
+        print("CLIENT:", type(client))
+        print("SUBJECT:", subject)
+
+        message = Mail(from_email=os.environ.get("SENDER_EMAIL_ADDRESS"), to_emails=recipient_address, subject=subject, html_content=html)
+
+        try:
+            response = client.send(message)
+            print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
+            print(response.status_code) #> 202 indicates SUCCESS
+            return response
+        except Exception as e:
+            print("Error sending email")
+            #print("OOPS", type(e), e.msg)
+            return None
+
+    valid_selections = ["whiskey", "whisky", "beer", "port", "vermouth", "everclear", "absinthe", "cider", "brandy", "aperol", "wine", "gin", "vodka", "rum", "tequila"]
+
+
+    liquor = input("Please select a liquor type: ").lower()
+        
+    if liquor not in valid_selections:
+        print("OOPS! Invalid liquor type. Please try again.")
+        exit()
+    else:
+        print(f"Selected liquor: '{liquor}'")
+        print("\n")
+            
+        
+        drinks = fetch_cocktails(liquor)
+
+        while True:
+            random_drink = random.choice(drinks)
+            print("Cocktail choice:",random_drink["strDrink"])
+            url = random_drink["strDrinkThumb"]
+            webbrowser.open(url)
+
+            user_choice = input("Do you want this type of cocktail? If so, type 'yes' If no, type any key: ").lower()
+            
+            if  user_choice == "yes":
+                break
+                
+                print("\n")
+        
+        drink_id = random_drink["idDrink"]
+
+        request_url_id = f"https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i={drink_id}"
+        id_response = requests.get(request_url_id)
+        id_data = json.loads(id_response.text)
+        
+
+    drink = id_data["drinks"][0]
+
+    for index in range(1, 15):
+        key = "strIngredient"+str(index)
+        ingredient = drink[key]
+        key = "strMeasure"+str(index)
+        measurement = drink[key]
+        if (ingredient is not None):
+            if measurement is not None:
+                print(measurement, ingredient)
+            else:
+                print(ingredient)
+
+
+    liquor
+
+    ##Email the choice to user 
+
+    from sendgrid import SendGridAPIClient
+    from sendgrid.helpers.mail import Mail
+
+    SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
+    SENDER_EMAIL_ADDRESS = os.getenv("SENDER_EMAIL_ADDRESS")
+
+    USER_NAME = os.getenv("USER_NAME", default="Cocktail Lover")
+        
     subject = "YOUR COCKTAIL RECIPE IS HERE!"
 
     cocktail_choice = random_drink["strDrink"]
@@ -139,7 +147,7 @@ if __name__ == "__main__":
         measurement = measurement_list[index]
         if (ingredient is not None):
             y+= f"<li> {measurement} | {ingredient} </li>"
-                  
+                
 
     cocktail_html = f"""
     <h3>Hello, {USER_NAME}!</h3>
