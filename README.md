@@ -54,3 +54,11 @@ python app/cocktail_recipes.py
 When prompted, choose inputs.
 
 > NOTE: if you see an error like "ModuleNotFoundError: No module named '...'", it's because the given package isn't installed, so run the `pip` command above to ensure that package has been installed into the virtual environment.
+
+## Testing
+
+In order to run testing of the application, type the following in your command line:
+
+    pytest
+
+> NOTE: Once completed, the user should yield 15 test results. Any failures should be investigated further to ensure the application runs correctly.
